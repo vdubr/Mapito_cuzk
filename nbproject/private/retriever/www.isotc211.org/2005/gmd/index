@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /2005/gmd</title>
+ </head>
+ <body>
+<h1>Index of /2005/gmd</h1>
+<pre><img src="/icons/blank.gif" alt="Icon "> <a href="?C=N;O=D">Name</a>                    <a href="?C=M;O=A">Last modified</a>      <a href="?C=S;O=A">Size</a>  <a href="?C=D;O=A">Description</a><hr><img src="/icons/back.gif" alt="[DIR]"> <a href="/2005/">Parent Directory</a>                             -   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="applicationSchema.xsd">applicationSchema.xsd</a>   06-Feb-2006 13:35  2.6K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="citation.xsd">citation.xsd</a>            06-Feb-2006 13:41   15K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="constraints.xsd">constraints.xsd</a>         06-Feb-2006 13:43  5.8K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="content.xsd">content.xsd</a>             06-Feb-2006 13:44   11K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="dataQuality.xsd">dataQuality.xsd</a>         06-Feb-2006 14:11   29K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="distribution.xsd">distribution.xsd</a>        06-Feb-2006 14:12   11K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="extent.xsd">extent.xsd</a>              07-Feb-2006 14:17   10K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="freeText.xsd">freeText.xsd</a>            17-Feb-2006 10:31  6.4K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="gmd.xsd">gmd.xsd</a>                 26-Jan-2005 17:41  954   
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="identification.xsd">identification.xsd</a>      06-Feb-2006 14:32   19K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="maintenance.xsd">maintenance.xsd</a>         06-Feb-2006 14:33  5.4K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="metadataApplication.xsd">metadataApplication.xsd</a> 07-Feb-2006 07:20  8.6K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="metadataEntity.xsd">metadataEntity.xsd</a>      06-Feb-2006 14:43  5.3K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="metadataExtension.xsd">metadataExtension.xsd</a>   06-Feb-2006 14:48  5.8K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="portrayalCatalogue.xsd">portrayalCatalogue.xsd</a>  06-Feb-2006 14:48  2.1K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="referenceSystem.xsd">referenceSystem.xsd</a>     06-Feb-2006 14:51  5.0K  
+<img src="/icons/unknown.gif" alt="[   ]"> <a href="spatialRepresentation.xsd">spatialRepresentatio..&gt;</a> 06-Feb-2006 14:54   13K  
+<hr></pre>
+<address>Apache/2.0.52 (Win32) mod_jk/1.2.15 DAV/2 Server at www.isotc211.org Port 80</address>
+</body></html>
