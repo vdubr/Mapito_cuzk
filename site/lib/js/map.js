@@ -1,18 +1,5 @@
 OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
-
-Ext.require([
-    'Ext.Window', // useless in fact, since we're using ext-all.js in the example
-    'GeoExt.panel.Map',
-    'GeoExt.window.Popup'
-    ]);
-
-
-
-Ext.application({
-    name: 'HelloGeoExt2',
-    launch: function() {
-       
-        
+function init(){
         
     
         zoomPoint = new OpenLayers.LonLat(15.235,50.038);
@@ -187,7 +174,7 @@ Ext.application({
     
         //konec kontroly
     
-        info = new OpenLayers.Control.WMSGetFeatureInfo({
+        var info = new OpenLayers.Control.WMSGetFeatureInfo({
             title: 'Identify features by clicking',
             layers:[obce],
             infoFormat: "text/xml",
@@ -234,7 +221,8 @@ Ext.application({
         
         var geocoder = new google.maps.Geocoder();
         
-        search = function codeAddress(address) {
+        this.aaa = "aaaaaaa"
+        this.search = function(address) {
             geocoder.geocode( {
                 'address': address,
                 'region':'cs'
@@ -272,91 +260,81 @@ Ext.application({
 
 
 
-
-
-        var mappanel = Ext.create('GeoExt.panel.Map', {
-            region: "center",
-            hideBorders: true,
-            title: 'Katastr Downloader',
-            map: map,
-            stateful: true,
-            stateId: 'mappanel',
-            tbar: [{
-                id:"search",
-                xtype: 'textfield',
-                name: 'name',
-                fieldLabel: 'Name',
-                allowBlank: false,  // requires a non-empty value
-                listeners: {
-                    specialkey: function(f,e){
-                        if (e.getKey() == e.ENTER) {
-                            search(this.value);
-                        }
-                    }
-                }
-                
-            },{
-                text: "Hledat",
-                handler: function() {
-                    search($("#search-inputEl").val());
-                }
-            }
-            ]
-        });
-
-postup = '<div id="postup"><ul><li>1)Do vyhledávacího políčka v horní části obrazovky zadejce hledanou lokalitu.</li><li>1)Hledanou lokalitu je možné také najít postupným přibližováním mapy.</li><li>2)Nejsou li již vyplněny, tak kliknutím do mapy na požadovanou lokalitu se automaticky vyplní v záložce Export hodnoty katastrálního území.</li><li>3)Jsou li hodnoty vyplněny, je možné zvolit výstupní formát a souřadnicový systém pro exportovaná data</li><li>4)Tlačítkem export se spustí funkce na která po chvíly vrátí data ke stáhnutí. Stahovaná data jsou vždy omezena katastrálním územím požadované lokality.</li><li>5) Stáhnutý ZIP soubor obsahuje v závislosti na území jeden nebo tři datové soubory. Pokud je katastrální mapa dotazované lokality v digitální podobě (tenké linie, né ruční vyhotovení), tak ZIP archiv obsahuje vrstvu parcel (polygonová), vrstvu parcel (liniová) a vrstvu s jedním polygonem celého katastrálního území. Pokud je katastrální mapa v dotazované lokalitě analogová, bude ZIP archiv obsahovat pouze vrstvu jednoho polygonu katastrálního území.</li><li>6)Postup lze opakovat.</li><li></li><li>TIP vyexportujte data v souřadnicovém systému EPSG:4326 a ve formátu KML, vygenerované soubory lze prohlížet v digitálním globu Google Earth.</li></ul></div>'
-        
-        var item1 = Ext.create('Ext.Panel', {
-            title: 'Export',
-            html: '<div id="areainfo"></div>',
-            cls:'empty'
-        });
-
-        var item2 = Ext.create('Ext.Panel', {
-            title: 'Informace',
-            html: '<div id="info">Služba využívá přístup k předgenerovaným datům KÚ poskytovaných ČUZK. </br> Data poskytované ČUZK jsou volně dostupná a stažitelná. </br> Služba je zdarma, ale není garantovaná jak její funkčnost, tak dostupnost.</br> Byly sledovány potíže s internetovým prohlížečem Internet Explorer. </div>',
-            cls:'empty'
-        });
-        var item3 = Ext.create('Ext.Panel', {
-            title: 'Postup',
-            html: postup,
-            cls:'empty'
-        });
-        
-        
-        /* {
-            contentEl: "desc",
-            region: "east",
-            bodyStyle: {"padding": "5px"},
-            collapsible: true,
-            collapseMode: "mini",
-            split: true,
-            width: 200,
-            title: "Description"
-        }*/
-        
-        
-        var accordion = Ext.create('Ext.Panel', {
-            title: "Description",
-            html: "desc",
-            region: "west",
-     
-            collapsible: true,
-            split: false,
-            width: 400,
-            layout:'accordion',
-            items:[
-            item1,item3,item2
-            ]
-        });
-        
-        Ext.create('Ext.container.Viewport', {
-            layout: 'border',
-            items: [
-            mappanel,accordion
-            ]
-        });
-        
+//
+//
+//        var mappanel = Ext.create('GeoExt.panel.Map', {
+//            region: "center",
+//            hideBorders: true,
+//            title: 'Katastr Downloader',
+//            map: map,
+//            stateful: true,
+//            stateId: 'mappanel',
+//            tbar: [{
+//                id:"search",
+//                xtype: 'textfield',
+//                name: 'name',
+//                fieldLabel: 'Name',
+//                allowBlank: false,  // requires a non-empty value
+//                listeners: {
+//                    specialkey: function(f,e){
+//                        if (e.getKey() == e.ENTER) {
+//                            search(this.value);
+//                        }
+//                    }
+//                }
+//                
+//            },{
+//                text: "Hledat",
+//                handler: function() {
+//                    search($("#search-inputEl").val());
+//                }
+//            }
+//            ]
+//        });
+//
+//postup = '<div id="postup"><ul><li>1)Do vyhledávacího políčka v horní části obrazovky zadejce hledanou lokalitu.</li><li>1)Hledanou lokalitu je možné také najít postupným přibližováním mapy.</li><li>2)Nejsou li již vyplněny, tak kliknutím do mapy na požadovanou lokalitu se automaticky vyplní v záložce Export hodnoty katastrálního území.</li><li>3)Jsou li hodnoty vyplněny, je možné zvolit výstupní formát a souřadnicový systém pro exportovaná data</li><li>4)Tlačítkem export se spustí funkce na která po chvíly vrátí data ke stáhnutí. Stahovaná data jsou vždy omezena katastrálním územím požadované lokality.</li><li>5) Stáhnutý ZIP soubor obsahuje v závislosti na území jeden nebo tři datové soubory. Pokud je katastrální mapa dotazované lokality v digitální podobě (tenké linie, né ruční vyhotovení), tak ZIP archiv obsahuje vrstvu parcel (polygonová), vrstvu parcel (liniová) a vrstvu s jedním polygonem celého katastrálního území. Pokud je katastrální mapa v dotazované lokalitě analogová, bude ZIP archiv obsahovat pouze vrstvu jednoho polygonu katastrálního území.</li><li>6)Postup lze opakovat.</li><li></li><li>TIP vyexportujte data v souřadnicovém systému EPSG:4326 a ve formátu KML, vygenerované soubory lze prohlížet v digitálním globu Google Earth.</li></ul></div>'
+//        
+//        var item1 = Ext.create('Ext.Panel', {
+//            title: 'Export',
+//            html: '<div id="areainfo"></div>',
+//            cls:'empty'
+//        });
+//
+//        var item2 = Ext.create('Ext.Panel', {
+//            title: 'Informace',
+//            html: '<div id="info">Služba využívá přístup k předgenerovaným datům KÚ poskytovaných ČUZK. </br> Data poskytované ČUZK jsou volně dostupná a stažitelná. </br> Služba je zdarma, ale není garantovaná jak její funkčnost, tak dostupnost.</br> Byly sledovány potíže s internetovým prohlížečem Internet Explorer. </div>',
+//            cls:'empty'
+//        });
+//        var item3 = Ext.create('Ext.Panel', {
+//            title: 'Postup',
+//            html: postup,
+//            cls:'empty'
+//        });
+//        
+//        
+//        
+//        
+//        var accordion = Ext.create('Ext.Panel', {
+//            title: "Description",
+//            html: "desc",
+//            region: "west",
+//     
+//            collapsible: true,
+//            split: false,
+//            width: 400,
+//            layout:'accordion',
+//            items:[
+//            item1,item3,item2
+//            ]
+//        });
+//        
+//        Ext.create('Ext.container.Viewport', {
+//            layout: 'border',
+//            items: [
+//            mappanel,accordion
+//            ]
+//        });
+//        
         $('#areainfo').append($('<table/>',{
             style:"border:1px",
             id:"table"
@@ -473,18 +451,3 @@ postup = '<div id="postup"><ul><li>1)Do vyhledávacího políčka v horní čás
         })
         
     }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-

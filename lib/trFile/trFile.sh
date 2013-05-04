@@ -1,6 +1,8 @@
 #$ku - cislo KU, $isrs - souradnicovy system(vstupni),$osrs - souradnicovy system(vystupni), $format - format
 # sh trSHP.sh 624578 4258 4326 shp
 
+#sudo chmod 777 data
+
 #muze nastat problem
 # ERROR 6: Unable to load PROJ.4 library (libproj.so), creation of OGRCoordinateTransformation failed 
 # reseni
@@ -30,7 +32,7 @@ cd ../../data
 mkdir $time"_"$ku"_"$osrs"_"$format
 cd $time"_"$ku"_"$osrs"_"$format
 
-wget "services.cuzk.cz/gml/inspire/cp/epsg%2D"$isrs"/"$ku".zip"
+wget "services.cuzk.cz/gml/inspire/cp/epsg-"$isrs"/"$ku".zip"
 unzip $ku.zip
 
 
