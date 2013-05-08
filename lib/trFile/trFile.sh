@@ -20,16 +20,15 @@
 #na vystupu otestovano 4326,
 
 
-time=$(date +%s)
-
 ku=$1
 isrs=$2 #parametr v "" aby byl str
 osrs=$3 #parametr v "" aby byl str
 pathosrs=$3
 format=$4
+time=$5
 
 cd ../../data
-mkdir $time"_"$ku"_"$osrs"_"$format
+#mkdir $time"_"$ku"_"$osrs"_"$format
 cd $time"_"$ku"_"$osrs"_"$format
 
 wget "services.cuzk.cz/gml/inspire/cp/epsg-"$isrs"/"$ku".zip"
@@ -54,7 +53,7 @@ else
 isrs="EPSG:$2"
 fi
 
-echo "ogr2ogr -f ESRI Shapefile data/"$ku"_parcely.shp CP.gml -nlt MULTIPOLYGON -nln" $ku"_CP -s_srs "$isrs" -t_srs epsg:"$osrs "-skipfailures"
+#echo "ogr2ogr -f ESRI Shapefile data/"$ku"_parcely.shp CP.gml -nlt MULTIPOLYGON -nln" $ku"_CP -s_srs "$isrs" -t_srs epsg:"$osrs "-skipfailures"
 
 
 for x in CZ CP CB

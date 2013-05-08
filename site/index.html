@@ -9,9 +9,7 @@
 
         <link rel="stylesheet" href="lib/js/theme/default/style.css" type="text/css">
         <link rel="stylesheet" href="lib/js/ui/jquery-ui.min.css" type="text/css">
-        <script type="text/javascript" src="lib/js/jquery.layout-latest.js"></script>
         <script type="text/javascript" src="lib/js/ui/jquery-ui.js"></script>
-        <script type="text/javascript" src="lib/js/ui/jquery.layout.resizePaneAccordions-latest.min.js"></script>
 
         <script src="http://maps.google.com/maps/api/js?v=3.7&sensor=false"></script>
         <script src="lib/js/OpenLayers.js"></script>
@@ -33,88 +31,116 @@
         </script>
         <script type="text/javascript">
             $(document).ready(function () {
-                
-                
-                
-                $("#accordion2").accordion({
-                    heightStyle: "fill"
-                    ,active: 0 // set active accordion-panel
-                    
+                $("#accordion").accordion({
+                    heightStyle: "fill" 
                 });
-
-//                
-//                $('body').layout({
-//                    west__onresize: function () {
-//                        $('#accordion2').accordion('resize')
-//                    }
-//                });
-//                
-                $('body').layout().sizePane("west", 400);
-                $('#accordion2').accordion('refresh')
-                
-                
-                 $('body').layout({ applyDefaultStyles: true });
+                //                $('.ui-accordion-header').removeClass('ui-corner-all')
                 this.init=new init();
+                //                        
+                $("#map").height($("#map").height()-$("#bar").height()-2)
             });
+            
+            
         </script>
+        <style type="text/css">
+            #bar {  
+                list-style:none;  
+                margin:30px auto 0px auto;  
+                padding:0px 20px 0px 20px;  
+                background: #014464;  
+                background: -moz-linear-gradient(top, #0272a7, #013953);  
+                background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0272a7), to(#013953));  
+                border: 1px solid #002232;  
+
+                -moz-box-shadow:inset 0px 0px 1px #edf9ff;  
+                -webkit-box-shadow:inset 0px 0px 1px #edf9ff;  
+                box-shadow:inset 0px 0px 1px #edf9ff;  
+            }
+            .ui-accordion-header{
+                height: 20px;
+                color: white;
+                margin:30px auto 0px auto;  
+                padding:0px 20px 0px 20px;  
+                background: #014464;  
+                background: -moz-linear-gradient(top, #0272a7, #013953);  
+                background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0272a7), to(#013953));  
+                border: 1px solid #002232;  
+                -moz-box-shadow:inset 0px 0px 1px #edf9ff;  
+                -webkit-box-shadow:inset 0px 0px 1px #edf9ff;  
+                box-shadow:inset 0px 0px 1px #edf9ff; } 
+
+            .ui-accordion-header-active{
+                height: 20px;
+                margin:30px auto 0px auto;  
+                padding:0px 20px 0px 20px;  
+                background: #014464;  
+                background: -moz-linear-gradient(top, #0272a7, #013953);  
+                background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0272a7), to(#013953));  
+                border: 1px solid #002232;  
+
+                -moz-box-shadow:inset 0px 0px 1px #edf9ff;  
+                -webkit-box-shadow:inset 0px 0px 1px #edf9ff;  
+                box-shadow:inset 0px 0px 1px #edf9ff;  }
+            .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+                color: white;
+                text-decoration: none;
+            }
+            .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr, .ui-corner-bottom {
+                border-top-right-radius: 0px;
+                border-top-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+
+
+
+        </style>
     </head>
-    <body>
-        <div class="ui-layout-center" >
-            <h3 class="ui-widget-header">
-                <div>
-                    <form onsubmit="init.search(adres.value);return false" >
-                        Hledat: <input type="text" placeholder="Obec" name="adres"><input type="submit" name="submit">
-                    </form>
+
+    <body style="margin: 0px">
+        <table style="width: 100%;height: 100%;border-spacing:0px ">
+            <td style="width: 400px">
+                <div style="width: 400px;height: 100%;margin: 0px;padding: 0 ">
+
+                    <div id="accordion" class="basic" >
+
+                        <h3><a href="#">Export</a></h3>
+                        <div id="areainfo">
+
+                        </div>
+
+                        <h3><a href="#">Postup</a></h3>
+                        <div>
+                            <ul>
+                                <li type="1">Do vyhledávacího políčka v horní části obrazovky zadejte hledanou lokalitu.</li>
+                                <li type="1">Hledanou lokalitu je možné také najít postupným přibližováním mapy.</li>
+                                <li type="1">Nejsou li již vyplněny, tak kliknutím do mapy na požadovanou lokalitu se automaticky vyplní v záložce Export hodnoty katastrálního území.</li>
+                                <li type="1">Jsou li hodnoty vyplněny, je možné zvolit výstupní formát a souřadnicový systém pro exportovaná data</li>
+                                <li type="1">Tlačítkem export se spustí funkce na která po chvíly vrátí data ke stáhnutí. Stahovaná data jsou vždy omezena katastrálním územím požadované lokality.</li>
+                                <li type="1">Stáhnutý ZIP soubor obsahuje v závislosti na území jeden nebo tři datové soubory. Pokud je katastrální mapa dotazované lokality v digitální podobě (tenké linie, né ruční vyhotovení), tak ZIP archiv obsahuje vrstvu parcel (polygonová), vrstvu parcel (liniová) a vrstvu s jedním polygonem celého katastrálního území. Pokud je katastrální mapa v dotazované lokalitě analogová, bude ZIP archiv obsahovat pouze vrstvu jednoho polygonu katastrálního území.</li>
+                                <li type="1">Postup lze opakovat.</li>
+                            </ul>
+                            TIP vyexportujte data v souřadnicovém systému EPSG:4326 a ve formátu KML, vygenerované soubory lze prohlížet v digitálním globu Google Earth.
+                        </div>
+                        <h3><a href="#">Informace</a></h3>
+                        <div>
+                            Služba využívá přístup k předgenerovaným datům KÚ poskytovaných ČUZK. 
+                            Data poskytované ČUZK jsou volně dostupná a stažitelná. 
+                            Služba je zdarma, ale není garantovaná jak její funkčnost, tak dostupnost.
+                        </div>
+                    </div>
                 </div>
-                <div id="map">
+            </td>
+            <td style="margin: 0px;padding: 0">
+                <div  style="width: 100%;height: 100%;margin: 0px ">
+                    <div id="bar" style="top: 20px;height: 30px;margin: 0px">
+                        <form onsubmit="init.search(adres.value);return false" >
+                            <input type="text" placeholder="Obec" name="adres"><input type="submit" name="submit" value="Hledat">
+                        </form>
+                    </div>
+                    <div id="map" style=""></div>
                 </div>
-            </h3>
-        </div>
-        <div class="ui-layout-west" style="display: none;">
-
-            <div class="ui-layout-content">
-                <div id="accordion2" class="basic" >
-
-                    <h3><a href="#">Section 1</a></h3>
-                    <div id="areainfo">
-
-                    </div>
-
-                    <h3><a href="#">Section 2</a></h3>
-                    <div>
-                        <h5>Sed Non Urna</h5>
-                        <p>Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus.
-                            Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit,
-                            faucibus interdum tellus libero ac justo.</p>
-                        <p>Vivamus non quam. In suscipit faucibus urna.</p>
-                    </div>
-
-                    <h3><a href="#">Section 3</a></h3>
-                    <div>
-                        <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-                            Phasellus pellentesque purus in massa. Aenean in pede.</p>
-                        <p>Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, 
-                            magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.</p>
-                        <ul>
-                            <li>List item one</li>
-                            <li>List item two</li>
-                            <li>List item three</li>
-                        </ul>
-                    </div>
-
-                    <h3><a href="#">Section 4</a></h3>
-                    <div>
-                        <p>Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames 
-                            ac turpis egestas.</p>
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                            Aenean lacinia mauris vel est.</p>
-                        <p>Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
+            </td>
+        </table>
     </body>
 </html>
